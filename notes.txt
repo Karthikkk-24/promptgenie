@@ -1,0 +1,15 @@
+Data Fetching
+
+1. Server Side Rendering (SSR)
+2. Static Site Generation (SSG)
+3. Incremental Static Generation (ISR)
+
+NEXT JS Supports the following HTTP methods:
+
+1. GET 
+2. POST
+3. PUT
+4. PATCH
+5. DELETE
+6. HEAD
+7. OPTIONS
