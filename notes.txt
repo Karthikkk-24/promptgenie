@@ -13,3 +13,8 @@ NEXT JS Supports the following HTTP methods:
 5. DELETE
 6. HEAD
 7. OPTIONS
+
+We can define METADATA in two ways: Static & Dynamic
+
+1. Static METADATA
+2. Dynamic METADATA
