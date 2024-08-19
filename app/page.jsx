@@ -1,3 +1,4 @@
+import Feed from '@components/Feed';
 import React from 'react';
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
                 creative prompts.
             </p>
 
-            {/* feeds */}
+            <Feed />
         </section>
     );
 }
