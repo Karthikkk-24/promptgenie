@@ -11,12 +11,13 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <Nav />
-                <Provider />
-                <div className="main">
-                    <div className="gradient"></div>
-                </div>
-                <main className="app">{children}</main>
+                <Provider>
+                    <Nav />
+                    <div className="main">
+                        <div className="gradient"></div>
+                    </div>
+                    <main className="app">{children}</main>
+                </Provider>
             </body>
         </html>
     );
