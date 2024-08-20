@@ -1,56 +1,59 @@
 'use client';
+
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Nav() {
-    const isLoggedIn = true;
+    const { data: session } = useSession();
 
     const [providers, setProviders] = useState(null);
     const [toggleDropdown, setToggleDropdown] = useState(false);
 
     useEffect(() => {
-        const setProviders = async () => {
-            const response = await getProviders();
-            setProviders(response);
-        };
-        setProviders();
+        (async () => {
+            const res = await getProviders();
+            setProviders(res);
+        })();
     }, []);
 
     return (
-        <nav className="flex justify-between w-full h-16 items-center px-8">
-            <Link href={'/'} className="flex items-center gap-2 justify-center">
+        <nav className="flex-between w-full mb-16 pt-3">
+            <Link href="/" className="flex gap-2 flex-center">
                 <Image
                     src="/assets/images/logo.svg"
-                    alt="PromptGenie Logo"
+                    alt="logo"
                     width={30}
                     height={30}
                     className="object-contain"
                 />
-                <p className="logo_text">PromptGenie</p>
+                <p className="logo_text">Promptopia</p>
             </Link>
 
+            {/* Desktop Navigation */}
             <div className="sm:flex hidden">
-                {isLoggedIn ? (
+                {session?.user ? (
                     <div className="flex gap-3 md:gap-5">
-                        <Link href={'/create-prompt'} className="black_btn">
+                        <Link href="/create-prompt" className="black_btn">
                             Create Post
                         </Link>
+
                         <button
                             type="button"
-                            onClick={() => signOut()}
+                            onClick={signOut}
                             className="outline_btn"
                         >
                             Sign Out
                         </button>
-                        <Link href={'/profile'}>
+
+                        <Link href="/profile">
                             <Image
-                                src="/assets/images/logo.svg"
+                                src={session?.user.image}
                                 width={37}
                                 height={37}
                                 className="rounded-full"
-                                alt="Profile"
+                                alt="profile"
                             />
                         </Link>
                     </div>
@@ -61,27 +64,29 @@ export default function Nav() {
                                 <button
                                     type="button"
                                     key={provider.name}
-                                    onClick={() => signIn(provider.id)}
+                                    onClick={() => {
+                                        signIn(provider.id);
+                                    }}
                                     className="black_btn"
                                 >
-                                    Sign In
+                                    Sign in
                                 </button>
                             ))}
                     </>
                 )}
             </div>
 
-            {/* mobile navigation */}
+            {/* Mobile Navigation */}
             <div className="sm:hidden flex relative">
-                {isLoggedIn ? (
+                {session?.user ? (
                     <div className="flex">
                         <Image
-                            src="/assets/images/logo.svg"
+                            src={session?.user.image}
                             width={37}
                             height={37}
                             className="rounded-full"
-                            alt="Profile"
-                            onClick={() => setToggleDropdown((prev) => !prev)}
+                            alt="profile"
+                            onClick={() => setToggleDropdown(!toggleDropdown)}
                         />
 
                         {toggleDropdown && (
@@ -120,10 +125,12 @@ export default function Nav() {
                                 <button
                                     type="button"
                                     key={provider.name}
-                                    onClick={() => signIn(provider.id)}
+                                    onClick={() => {
+                                        signIn(provider.id);
+                                    }}
                                     className="black_btn"
                                 >
-                                    Sign In
+                                    Sign in
                                 </button>
                             ))}
                     </>
@@ -131,4 +138,4 @@ export default function Nav() {
             </div>
         </nav>
     );
-}
+};
