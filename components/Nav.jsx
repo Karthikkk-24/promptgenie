@@ -13,13 +13,13 @@ export default function Nav() {
 
     useEffect(() => {
         (async () => {
-            const res = await getProviders();
-            setProviders(res);
+            const response = await getProviders();
+            setProviders(response);
         })();
     }, []);
 
     return (
-        <nav className="flex-between w-full mb-16 pt-3">
+        <nav className="flex items-center justify-between px-10 w-full h-20 max-md:px-6 ">
             <Link href="/" className="flex gap-2 flex-center">
                 <Image
                     src="/assets/images/logo.svg"
