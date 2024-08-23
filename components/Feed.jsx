@@ -15,6 +15,7 @@ export default function Feed() {
             const data = await response.json();
 
             setPosts(data);
+            console.log('data', data);
         };
 
         fetchPosts();
@@ -22,7 +23,7 @@ export default function Feed() {
 
     const PromptCardList = ({ data, handleTagClick }) => {
         return (
-            <div className='mt-16 prompt_layout'>
+            <div className="mt-16 prompt_layout">
                 {data.map((post) => (
                     <PromptCard
                         key={post._id}
@@ -31,8 +32,8 @@ export default function Feed() {
                     />
                 ))}
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <section className="feed">
@@ -50,7 +51,7 @@ export default function Feed() {
                 />
             </form>
 
-            <PromptCardList data={[posts]} handleTagClick={() => {}} />
+            <PromptCardList data={posts} handleTagClick={() => {}} />
         </section>
     );
 }
