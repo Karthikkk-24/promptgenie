@@ -5,7 +5,7 @@ export const GET = async (req, { params: { id } }) => {
     try {
         await connectToDB();
 
-        const prompt = await Prompt.findById({ id }).populate('creator');
+        const prompt = await Prompt.findById(id).populate('creator');
 
         if (!prompt) return new Response('Prompt not found', { status: 404 });
 
@@ -20,27 +20,29 @@ export const GET = async (req, { params: { id } }) => {
     }
 };
 
-export const PATCH = async (req, { params: { id } }) => {
+export const PATCH = async (request, { params }) => {
+    const { prompt, tag } = await request.json();
+    console.log('prompt', prompt, 'tag', tag);
+
     try {
-        const { prompt, tag } = await req.json();
         await connectToDB();
 
-        const existingPrompt = await Prompt.findById({ id });
+        const existingPrompt = await Prompt.findById(params.id);
 
-        if (!existingPrompt)
+        if (!existingPrompt) {
             return new Response('Prompt not found', { status: 404 });
+        }
 
         existingPrompt.prompt = prompt;
         existingPrompt.tag = tag;
 
-        return new Response(
-            JSON.stringify(existingPrompt, {
-                status: 200,
-            })
-        );
+        await existingPrompt.save();
+
+        return new Response('Successfully updated the Prompts', {
+            status: 200,
+        });
     } catch (error) {
-        console.log(error);
-        return new Response('Failed to update prompt', { status: 500 });
+        return new Response('Error Updating Prompt', { status: 500 });
     }
 };
 
