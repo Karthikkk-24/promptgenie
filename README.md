@@ -94,3 +94,4 @@ If you have any questions or feedback, feel free to reach out:
 - LinkedIn: [Karthik Shettigar](https://www.linkedin.com/in/kks24)
 - Twitter: [@karthikkk24](https://twitter.com/karthikkk24)
 - Instagram: [the_coding_hacker](https://www.instagram.com/the_coding_hacker/)
+- Medium: [Karthik Shettigar](https://medium.com/@karthikkk)
