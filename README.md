@@ -90,4 +90,7 @@ You can deploy PromptGenie to Vercel, Netlify, or any other hosting service that
 
 If you have any questions or feedback, feel free to reach out:
 
-- GitHub: [Karthik Shettigar](https://github.com/Karthikkk-24)
+- GitHub: [Karthikkk-24](https://github.com/Karthikkk-24)
+- LinkedIn: [Karthik Shettigar](https://www.linkedin.com/in/kks24)
+- Twitter: [@karthikkk24](https://twitter.com/karthikkk24)
+- Instagram: [the_coding_hacker](https://www.instagram.com/the_coding_hacker/)
