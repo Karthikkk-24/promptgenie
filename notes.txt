@@ -18,3 +18,11 @@ We can define METADATA in two ways: Static & Dynamic
 
 1. Static METADATA
 2. Dynamic METADATA
+
+Pending to implement features
+1. Implementing Search Functionality
+    1. Search By Prompt
+    2. Search By Tag
+    3. Search By Username
+2. Implement Click On Tag
+3. Implement View Other Profiles
